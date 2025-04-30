@@ -11,7 +11,7 @@ do
         # Output vertex number
         echo "$line1" >> "$output_file"
         # Input both V and E lines to program and get results
-        { echo "$line1"; echo "$line2"; } | ./build/ece650-prj >> "$output_file"
+        { echo "$line1"; echo "$line2"; } | ./build/vertex_cover_main >> "$output_file"
         echo "" >> "$output_file"  # Add blank line between test cases
     fi
 done < "graphs.txt"

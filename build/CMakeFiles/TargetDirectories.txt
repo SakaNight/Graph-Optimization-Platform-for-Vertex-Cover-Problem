@@ -1,0 +1,17 @@
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/CMakeFiles/vertex_cover_main.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/CMakeFiles/edit_cache.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/CMakeFiles/rebuild_cache.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/CMakeFiles/list_install_components.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/CMakeFiles/install.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/CMakeFiles/install/local.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/CMakeFiles/install/strip.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/minisat-lib-static.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/minisat-lib-shared.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/minisat_core.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/minisat_simp.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/edit_cache.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/rebuild_cache.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/list_install_components.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/install.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/install/local.dir
+/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat/CMakeFiles/install/strip.dir
