@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models import GraphInput
 from backend.solver_runner import run_solver
 from backend.database import database
+import json
 
 app = FastAPI()
 
@@ -26,3 +27,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.websocket("/ws/solve")
+async def websocket_solver(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        data = await websocket.receive_text()
+        graph = json.loads(data)
+        result = await run_solver(GraphInput(**graph))
+
+        await websocket.send_text(json.dumps(result.dict()))
+    except Exception as e:
+        await websocket.send_text(json.dumps({"error": str(e)}))
+    finally:
+        await websocket.close()

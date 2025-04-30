@@ -2,7 +2,7 @@ import { useState } from 'react';
 import GraphEditor from './components/GraphEditor';
 import AlgorithmSelector from './components/AlgorithmSelector';
 import ResultPanel from './components/ResultPanel';
-import { solveGraph } from './api';
+import { solveGraphWS } from './api';
 import { SolveResult } from './types';
 
 export default function App() {
@@ -11,6 +11,7 @@ export default function App() {
   const [selectedAlgos, setSelectedAlgos] = useState(['cnf_sat_vc', 'approx_vc_1', 'approx_vc_2']);
   const [result, setResult] = useState<SolveResult | null>(null);
   const [highlightKey, setHighlightKey] = useState<'cnf_vc' | 'approx_vc_1' | 'approx_vc_2'>('cnf_vc');
+
 
   const handleSolve = async () => {
     const edgePairs: [number, number][] = links.map(({ source, target }) => [
@@ -23,14 +24,15 @@ export default function App() {
       edges: edgePairs,
     };
   
-    console.log('Sending graph:', input);
-  
-    try {
-      const res = await solveGraph(input);
-      setResult(res);
-    } catch (err) {
-      console.error('Solve error:', err);
-    }
+    solveGraphWS(
+      input,
+      (res) => {
+        setResult(res);
+      },
+      (err) => {
+        console.error('WebSocket solve error:', err);
+      }
+    );
   };
 
   const handleGraphChange = (newNodes: typeof nodes, newLinks: typeof links) => {
