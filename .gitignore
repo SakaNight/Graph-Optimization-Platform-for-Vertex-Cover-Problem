@@ -52,3 +52,10 @@ htmlcov/
 .tox/
 .coverage
 .pytest_cache/
+
+# Ignore analysis outputs
+running_time_plot.png
+approximation_ratio_plot.png
+plot-running-time.py
+plot-approximate-ratio.py
+results.txt

@@ -109,20 +109,6 @@ docker compose up --build
 
 ---
 
-## 📊 Sample Visualizations
-
-- `running_time_plot.png` – runtime comparison
-- `approximation_ratio_plot.png` – approximation ratio vs. optimal
-
-Generated using:
-
-```bash
-python plot-running-time.py
-python plot-approximate-ratio.py
-```
-
----
-
 ## 📁 Dataset Format
 
 Use `graphs.txt` for bulk testing. JSON upload is also supported:
