@@ -14,17 +14,16 @@ struct ThreadData {
     int num_vertices;
     std::vector<std::pair<int, int>> edges;
     std::vector<int> result;
-    struct timespec start_ts;
-    struct timespec end_ts;
     bool timeout;
-    clockid_t cid;
+    std::chrono::steady_clock::time_point start;
+    std::chrono::steady_clock::time_point end;
 };
 
-void print_result(const std::string& algo_name, const std::vector<int>& result, 
-                 const timespec& start, const timespec& end,
-                 bool timeout) {
-    double milliseconds = (end.tv_sec - start.tv_sec) * 1000.0 + 
-                         (end.tv_nsec - start.tv_nsec) / 1000000.0;
+void print_result(const std::string& algo_name, const std::vector<int>& result,
+        const std::chrono::steady_clock::time_point& start,
+        const std::chrono::steady_clock::time_point& end,
+        bool timeout) {
+    double milliseconds = std::chrono::duration<double, std::milli>(end - start).count();
                      
     std::cout << algo_name << ": ";
     if (timeout || result.empty()) {
@@ -36,51 +35,44 @@ void print_result(const std::string& algo_name, const std::vector<int>& result,
         }
         std::cout << std::endl;
     }
-    // std::cout << "CPU Time: " << std::fixed << std::setprecision(3) << milliseconds << " ms" << std::endl;
+    std::cout << "CPU Time: " << std::fixed << std::setprecision(3) << milliseconds << " ms" << std::endl;
 }
 
 static void* run_cnf_sat_vc(void* arg) {
     ThreadData* data = static_cast<ThreadData*>(arg);
-    
-    pthread_getcpuclockid(pthread_self(), &data->cid);
-    
-    clock_gettime(data->cid, &data->start_ts);
-    
+
+    data->start = std::chrono::steady_clock::now();
+
     data->result = CNFSAT::cnf_sat_vc(data->num_vertices, data->edges);
-    
-    clock_gettime(data->cid, &data->end_ts);
-    
-    double seconds = (data->end_ts.tv_sec - data->start_ts.tv_sec) +
-                    (data->end_ts.tv_nsec - data->start_ts.tv_nsec) / 1000000000.0;
+
+    data->end = std::chrono::steady_clock::now();
+
+    double seconds = std::chrono::duration<double>(data->end - data->start).count();
     if (seconds > 120.0) {
         data->timeout = true;
         data->result.clear();
     }
-    
+
     return nullptr;
 }
 
 static void* run_approx_vc_1(void* arg) {
     ThreadData* data = static_cast<ThreadData*>(arg);
-    
-    pthread_getcpuclockid(pthread_self(), &data->cid);
-    clock_gettime(data->cid, &data->start_ts);
-    
+
+    data->start = std::chrono::steady_clock::now();
     data->result = APPROX1::approx_vc_1(data->num_vertices, data->edges);
-    
-    clock_gettime(data->cid, &data->end_ts);
+    data->end = std::chrono::steady_clock::now();
+
     return nullptr;
 }
 
 static void* run_approx_vc_2(void* arg) {
     ThreadData* data = static_cast<ThreadData*>(arg);
-    
-    pthread_getcpuclockid(pthread_self(), &data->cid);
-    clock_gettime(data->cid, &data->start_ts);
-    
+
+    data->start = std::chrono::steady_clock::now();
     data->result = APPROX2::approx_vc_2(data->num_vertices, data->edges);
-    
-    clock_gettime(data->cid, &data->end_ts);
+    data->end = std::chrono::steady_clock::now();
+
     return nullptr;
 }
 
@@ -158,14 +150,14 @@ int main() {
                 }
                 
                 print_result("CNF-SAT-VC", thread_data[0].result, 
-                           thread_data[0].start_ts, thread_data[0].end_ts,
-                           thread_data[0].timeout);
+                    thread_data[0].start, thread_data[0].end,
+                    thread_data[0].timeout);
                 print_result("APPROX-VC-1", thread_data[1].result,
-                           thread_data[1].start_ts, thread_data[1].end_ts,
-                           thread_data[1].timeout);
+                    thread_data[1].start, thread_data[1].end,
+                    thread_data[1].timeout);
                 print_result("APPROX-VC-2", thread_data[2].result,
-                           thread_data[2].start_ts, thread_data[2].end_ts,
-                           thread_data[2].timeout);
+                    thread_data[2].start, thread_data[2].end,
+                    thread_data[2].timeout);
             }
         }
     }
