@@ -73,15 +73,15 @@ CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o: CMakeFiles/vertex_cove
 CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o: /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/vertex_cover_main.cpp
 CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o: CMakeFiles/vertex_cover_main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o -MF CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o.d -o CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/vertex_cover_main.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o -MF CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o.d -o CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/vertex_cover_main.cpp
 
 CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/vertex_cover_main.cpp > CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/vertex_cover_main.cpp > CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.i
 
 CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/vertex_cover_main.cpp -o CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/vertex_cover_main.cpp -o CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.s
 
 # Object files for target vertex_cover_main
 vertex_cover_main_OBJECTS = \

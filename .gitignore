@@ -1,0 +1,61 @@
+# Node.js
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# React build
+frontend/dist/
+frontend/.next/
+frontend/.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.pkl
+*.db
+*.env
+*.DS_Store
+.env.*
+venv/
+.venv/
+*.egg-info/
+.eggs/
+.cache/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Docker
+**/pgdata/
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.out
+*.pid
+
+# VSCode Debug
+*.code-workspace
+
+# pytest
+htmlcov/
+.tox/
+.coverage
+.pytest_cache/
+
+# Ignore analysis outputs
+running_time_plot.png
+approximation_ratio_plot.png
+plot-running-time.py
+plot-approximate-ratio.py
+results.txt

@@ -1,0 +1,115 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"external/minisat/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 76,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 81,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"external/minisat/libminisat.a"
+			],
+			"targetId" : "minisat-lib-static::@2bffe5da3e8ef4767893",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"external/minisat/libminisat.2.1.0.dylib",
+				"external/minisat/libminisat.2.dylib"
+			],
+			"targetId" : "minisat-lib-shared::@2bffe5da3e8ef4767893",
+			"targetIndex" : 0,
+			"targetInstallNamelink" : "skip",
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"external/minisat/libminisat.dylib"
+			],
+			"targetId" : "minisat-lib-shared::@2bffe5da3e8ef4767893",
+			"targetIndex" : 0,
+			"targetInstallNamelink" : "only",
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"external/minisat/minisat_core"
+			],
+			"targetId" : "minisat_core::@2bffe5da3e8ef4767893",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"external/minisat/minisat"
+			],
+			"targetId" : "minisat_simp::@2bffe5da3e8ef4767893",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include/minisat",
+			"paths" : 
+			[
+				"external/minisat/minisat/mtl",
+				"external/minisat/minisat/utils",
+				"external/minisat/minisat/core",
+				"external/minisat/minisat/simp"
+			],
+			"type" : "directory"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "external/minisat",
+		"source" : "external/minisat"
+	}
+}

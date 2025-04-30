@@ -1,0 +1,68 @@
+[
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build",
+  "command": "/usr/bin/clang++  -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -o CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/vertex_cover_main.cpp",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/vertex_cover_main.cpp",
+  "output": "CMakeFiles/vertex_cover_main.dir/vertex_cover_main.cpp.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -o CMakeFiles/minisat-lib-static.dir/minisat/utils/Options.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/utils/Options.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/utils/Options.cc",
+  "output": "external/minisat/CMakeFiles/minisat-lib-static.dir/minisat/utils/Options.cc.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -o CMakeFiles/minisat-lib-static.dir/minisat/utils/System.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/utils/System.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/utils/System.cc",
+  "output": "external/minisat/CMakeFiles/minisat-lib-static.dir/minisat/utils/System.cc.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -o CMakeFiles/minisat-lib-static.dir/minisat/core/Solver.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/core/Solver.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/core/Solver.cc",
+  "output": "external/minisat/CMakeFiles/minisat-lib-static.dir/minisat/core/Solver.cc.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -o CMakeFiles/minisat-lib-static.dir/minisat/simp/SimpSolver.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/simp/SimpSolver.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/simp/SimpSolver.cc",
+  "output": "external/minisat/CMakeFiles/minisat-lib-static.dir/minisat/simp/SimpSolver.cc.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Dminisat_lib_shared_EXPORTS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fPIC -o CMakeFiles/minisat-lib-shared.dir/minisat/utils/Options.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/utils/Options.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/utils/Options.cc",
+  "output": "external/minisat/CMakeFiles/minisat-lib-shared.dir/minisat/utils/Options.cc.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Dminisat_lib_shared_EXPORTS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fPIC -o CMakeFiles/minisat-lib-shared.dir/minisat/utils/System.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/utils/System.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/utils/System.cc",
+  "output": "external/minisat/CMakeFiles/minisat-lib-shared.dir/minisat/utils/System.cc.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Dminisat_lib_shared_EXPORTS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fPIC -o CMakeFiles/minisat-lib-shared.dir/minisat/core/Solver.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/core/Solver.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/core/Solver.cc",
+  "output": "external/minisat/CMakeFiles/minisat-lib-shared.dir/minisat/core/Solver.cc.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Dminisat_lib_shared_EXPORTS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fPIC -o CMakeFiles/minisat-lib-shared.dir/minisat/simp/SimpSolver.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/simp/SimpSolver.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/simp/SimpSolver.cc",
+  "output": "external/minisat/CMakeFiles/minisat-lib-shared.dir/minisat/simp/SimpSolver.cc.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -o CMakeFiles/minisat_core.dir/minisat/core/Main.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/core/Main.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/core/Main.cc",
+  "output": "external/minisat/CMakeFiles/minisat_core.dir/minisat/core/Main.cc.o"
+},
+{
+  "directory": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/build/external/minisat",
+  "command": "/usr/bin/clang++ -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -o CMakeFiles/minisat_simp.dir/minisat/simp/Main.cc.o -c /Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/simp/Main.cc",
+  "file": "/Users/arieschan/Desktop/Work/Project/Graph-Solver/Graph-Optimization-Platform-for-Vertex-Cover-Problem/external/minisat/minisat/simp/Main.cc",
+  "output": "external/minisat/CMakeFiles/minisat_simp.dir/minisat/simp/Main.cc.o"
+}
+]
