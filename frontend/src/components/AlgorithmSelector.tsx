@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 interface AlgorithmSelectorProps {
   selected: string[];
   onChange: (algorithms: string[]) => void;
@@ -21,18 +19,22 @@ export default function AlgorithmSelector({ selected, onChange }: AlgorithmSelec
   };
 
   return (
-    <div className="space-y-2">
+    <div className="bg-white/5 backdrop-blur-md p-4 rounded-xl shadow-md border border-white/20 space-y-3 transition-all">
+      <h2 className="text-cyan-300 font-bold mb-1 uppercase text-sm">Select Algorithms</h2>
       {algorithms.map(({ id, label }) => (
-        <label key={id} className="block">
+        <label
+          key={id}
+          className="flex items-center space-x-2 cursor-pointer text-white hover:text-cyan-200 transition"
+        >
           <input
             type="checkbox"
             checked={selected.includes(id)}
             onChange={() => toggle(id)}
-            className="mr-2"
+            className="accent-cyan-400 w-4 h-4"
           />
-          {label}
+          <span>{label}</span>
         </label>
       ))}
     </div>
   );
-} 
+}
