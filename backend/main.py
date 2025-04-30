@@ -1,13 +1,23 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models import GraphInput, SolveResult
 from backend.solver_runner import run_solver
+from backend.database import database
 
 app = FastAPI()
 
-@app.post("/solve", response_model=SolveResult)
-def solve_vc(graph: GraphInput):
-    return run_solver(graph)
+@app.on_event("startup")
+async def startup():
+    await database.connect()
+
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
+
+@app.post("/solve")
+async def solve(graph: GraphInput):
+    result = await run_solver(graph)
+    return result
 
 app.add_middleware(
     CORSMiddleware,
