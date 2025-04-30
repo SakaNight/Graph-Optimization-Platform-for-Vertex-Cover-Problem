@@ -6,11 +6,7 @@ from backend.solver_runner import run_solver
 app = FastAPI()
 
 @app.post("/solve", response_model=SolveResult)
-# def solve_vc(graph: GraphInput):
-#     return run_solver(graph)
-def solve_vc(graph: GraphInput, request: Request):
-    import asyncio
-    print("RECEIVED DATA:", asyncio.run(request.body()))
+def solve_vc(graph: GraphInput):
     return run_solver(graph)
 
 app.add_middleware(

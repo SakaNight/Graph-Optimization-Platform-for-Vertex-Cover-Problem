@@ -14,13 +14,13 @@ interface GraphEditorProps {
   nodes: Node[];
   links: Link[];
   onGraphChange: (nodes: Node[], links: Link[]) => void;
-  highlightMap?: Record<string, number[]>; // e.g. { cnf_vc: [1,2], approx_vc_1: [3] }
+  highlightMap?: Record<string, number[]>;
 }
 
 const colorMap: Record<string, string> = {
-  cnf_vc: '#f87171',       // red
-  approx_vc_1: '#34d399',  // green
-  approx_vc_2: '#60a5fa',  // blue
+  cnf_vc: '#f87171',
+  approx_vc_1: '#34d399',
+  approx_vc_2: '#60a5fa',
 };
 
 export default function GraphEditor({ nodes, links, onGraphChange, highlightMap = {} }: GraphEditorProps) {
@@ -56,7 +56,7 @@ export default function GraphEditor({ nodes, links, onGraphChange, highlightMap 
       .enter().append('circle')
       .attr('r', 8)
       .attr('fill', (d) => {
-        if (d.id === selectedNodeId) return '#facc15'; // yellow highlight for selected node
+        if (d.id === selectedNodeId) return '#facc15';
         for (const key of Object.keys(highlightMap)) {
           if (highlightMap[key]?.includes(d.id)) {
             return colorMap[key] || '#9ca3af';
@@ -68,7 +68,7 @@ export default function GraphEditor({ nodes, links, onGraphChange, highlightMap 
         if (selectedNodeId === null) {
           setSelectedNodeId(targetNode.id);
         } else if (selectedNodeId === targetNode.id) {
-          setSelectedNodeId(null); // deselect if same node clicked again
+          setSelectedNodeId(null);
         } else {
           onGraphChange(nodes, [...links, { source: selectedNodeId, target: targetNode.id }]);
           setSelectedNodeId(null);
@@ -76,7 +76,14 @@ export default function GraphEditor({ nodes, links, onGraphChange, highlightMap 
         event.stopPropagation();
       });
 
-    node.append('title').text((d) => `Node ${d.id}`);
+    const label = svg.append('g')
+      .selectAll('text')
+      .data(nodes)
+      .enter()
+      .append('text')
+      .text(d => d.id.toString())
+      .attr('font-size', 12)
+      .attr('fill', 'black');
 
     svg.on('click', (event: any) => {
       const coords = d3.pointer(event);
@@ -96,6 +103,10 @@ export default function GraphEditor({ nodes, links, onGraphChange, highlightMap 
       node
         .attr('cx', (d: any) => d.x)
         .attr('cy', (d: any) => d.y);
+
+      label
+        .attr('x', (d: any) => d.x + 10)
+        .attr('y', (d: any) => d.y + 4);
     });
   }, [nodes, links, highlightMap, selectedNodeId]);
 

@@ -86,7 +86,6 @@ export default function App() {
               <option value="approx_vc_2">APPROX-VC-2</option>
             </select>
           </div>
-
           <button onClick={handleSolve} className="px-4 py-2 bg-blue-600 text-white rounded w-full">
             Solve
           </button>

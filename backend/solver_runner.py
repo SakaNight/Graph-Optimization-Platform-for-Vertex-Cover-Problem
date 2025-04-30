@@ -26,20 +26,23 @@ def run_solver(graph: GraphInput) -> SolveResult:
     cnf_match = re.search(r"CNF-SAT-VC:\s*([\d,]*)", stdout)
     vc1_match = re.search(r"APPROX-VC-1:\s*([\d,]*)", stdout)
     vc2_match = re.search(r"APPROX-VC-2:\s*([\d,]*)", stdout)
+    print("----- Solver Output -----")
+    print(stdout)
 
     cnf_vc = [int(x) for x in cnf_match.group(1).split(',')] if cnf_match and cnf_match.group(1) else []
     approx_vc_1 = [int(x) for x in vc1_match.group(1).split(',')] if vc1_match and vc1_match.group(1) else []
     approx_vc_2 = [int(x) for x in vc2_match.group(1).split(',')] if vc2_match and vc2_match.group(1) else []
 
-    time_match = lambda label: re.search(rf"{label}:.*?CPU Time: ([\d.]+) ms", stdout)
+    time_matches = re.findall(r"CPU Time:\s*([\d.]+)", stdout)
+    time_values = [float(t) for t in time_matches]
 
     return SolveResult(
         cnf_vc=cnf_vc,
         approx_vc_1=approx_vc_1,
         approx_vc_2=approx_vc_2,
         times={
-            'cnf_sat_vc': float(time_match("CNF-SAT-VC").group(1)) if time_match("CNF-SAT-VC") else 0.0,
-            'approx_vc_1': float(time_match("APPROX-VC-1").group(1)) if time_match("APPROX-VC-1") else 0.0,
-            'approx_vc_2': float(time_match("APPROX-VC-2").group(1)) if time_match("APPROX-VC-2") else 0.0,
+            'cnf_sat_vc': time_values[0] if len(time_values) > 0 else 0.0,
+            'approx_vc_1': time_values[1] if len(time_values) > 1 else 0.0,
+            'approx_vc_2': time_values[2] if len(time_values) > 2 else 0.0,
         }
     )
