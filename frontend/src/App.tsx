@@ -87,6 +87,31 @@ export default function App() {
           </select>
         </div>
 
+        <input
+          type="file"
+          accept=".json"
+          className="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0 file:text-sm file:font-semibold
+                    file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 mb-2"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              try {
+                const json = JSON.parse(event.target?.result as string);
+                if (!json.vertices || !json.edges) throw new Error('Invalid format');
+                const newVertices = json.vertices.map((id: number) => ({ id }));
+                const newEdges = json.edges.map(([source, target]: [number, number]) => ({ source, target }));
+                handleGraphChange(newVertices, newEdges);
+              } catch (err) {
+                alert('Uploading failed: JSON should contain "vertices" and "edges"');
+              }
+            };
+            reader.readAsText(file);
+          }}
+/>      
         <button
           onClick={handleSolve}
           className="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:scale-105 transition duration-300 ease-in-out"
@@ -102,7 +127,44 @@ export default function App() {
         </button>
       </div>
     </div>
+    {result && (
+      <button
+        onClick={() => {
+          const exportResult = {
+            num_vertices: nodes.length,
+            edges: links.map(({ source, target }) => [source, target]),
+            results: {
+              cnf_sat_vc: {
+                cover: result.cnf_vc,
+                size: result.cnf_vc.length,
+                time_ms: result.times.cnf_sat_vc,
+              },
+              approx_vc_1: {
+                cover: result.approx_vc_1,
+                size: result.approx_vc_1.length,
+                time_ms: result.times.approx_vc_1,
+              },
+              approx_vc_2: {
+                cover: result.approx_vc_2,
+                size: result.approx_vc_2.length,
+                time_ms: result.times.approx_vc_2,
+              },
+            },
+          };
 
+          const blob = new Blob([JSON.stringify(exportResult, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'vertex-cover-result.json';
+          a.click();
+          URL.revokeObjectURL(url);
+        }}
+        className="w-full px-4 py-2 bg-green-600 text-white font-semibold rounded-lg hover:scale-105 transition duration-300 ease-in-out"
+      >
+        Export Result JSON
+      </button>
+    )}
     <div className="mt-6">
       <ResultPanel result={result} />
     </div>
