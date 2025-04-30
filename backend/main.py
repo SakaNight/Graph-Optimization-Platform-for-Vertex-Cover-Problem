@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.models import GraphInput, SolveResult
+from backend.models import GraphInput
 from backend.solver_runner import run_solver
 from backend.database import database
 

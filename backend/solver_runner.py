@@ -1,6 +1,5 @@
 import subprocess
 import re
-from typing import List
 from backend.models import GraphInput, SolveResult
 from backend.cache import check_cache, insert_cache
 import asyncio
@@ -10,6 +9,7 @@ def format_graph_input(graph: GraphInput) -> str:
     edge_pairs = [f"<{u},{v}>" for u, v in graph.edges]
     edge_line = f"E {{{','.join(edge_pairs)}}}"
     return f"{vertex_line}\n{edge_line}\n"
+
 
 async def call_cpp_solver(graph: GraphInput) -> dict:
     input_str = format_graph_input(graph)
@@ -28,7 +28,6 @@ async def call_cpp_solver(graph: GraphInput) -> dict:
     if stderr:
         print("Solver stderr:", stderr)
 
-    # Extract solutions
     cnf_match = re.search(r"CNF-SAT-VC:\s*([\d,]*)", stdout)
     vc1_match = re.search(r"APPROX-VC-1:\s*([\d,]*)", stdout)
     vc2_match = re.search(r"APPROX-VC-2:\s*([\d,]*)", stdout)
@@ -37,7 +36,6 @@ async def call_cpp_solver(graph: GraphInput) -> dict:
     approx_vc_1 = [int(x) for x in vc1_match.group(1).split(',')] if vc1_match and vc1_match.group(1) else []
     approx_vc_2 = [int(x) for x in vc2_match.group(1).split(',')] if vc2_match and vc2_match.group(1) else []
 
-    # Extract CPU times
     time_matches = re.findall(r"CPU Time:\s*([\d.]+)", stdout)
     time_values = [float(t) for t in time_matches]
 
@@ -52,6 +50,7 @@ async def call_cpp_solver(graph: GraphInput) -> dict:
         }
     }
 
+
 async def run_solver(graph: GraphInput) -> SolveResult:
     results = {}
     times = {}
@@ -63,9 +62,11 @@ async def run_solver(graph: GraphInput) -> SolveResult:
     ]:
         cached = await check_cache(graph, algo_key)
         if cached:
+            print(f"[Cache Hit] {algo_key}")
             results[result_key] = cached[0]
             times[algo_key] = cached[1]
         else:
+            print(f"[Cache Miss] {algo_key}")
             cpp_result = await call_cpp_solver(graph)
             result = cpp_result[result_key]
             time_ms = cpp_result['times'][algo_key]
