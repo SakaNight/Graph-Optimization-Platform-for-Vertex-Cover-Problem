@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
 interface Node {
@@ -14,10 +14,18 @@ interface GraphEditorProps {
   nodes: Node[];
   links: Link[];
   onGraphChange: (nodes: Node[], links: Link[]) => void;
+  highlightMap?: Record<string, number[]>; // e.g. { cnf_vc: [1,2], approx_vc_1: [3] }
 }
 
-export default function GraphEditor({ nodes, links, onGraphChange }: GraphEditorProps) {
+const colorMap: Record<string, string> = {
+  cnf_vc: '#f87171',       // red
+  approx_vc_1: '#34d399',  // green
+  approx_vc_2: '#60a5fa',  // blue
+};
+
+export default function GraphEditor({ nodes, links, onGraphChange, highlightMap = {} }: GraphEditorProps) {
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const [selectedNodeId, setSelectedNodeId] = useState<number | null>(null);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
@@ -25,6 +33,8 @@ export default function GraphEditor({ nodes, links, onGraphChange }: GraphEditor
 
     const width = 600;
     const height = 400;
+
+    let currentNodeId = nodes.length > 0 ? Math.max(...nodes.map(n => n.id)) : 0;
 
     const simulation = d3.forceSimulation(nodes as any)
       .force('link', d3.forceLink(links as any).id((d: any) => d.id))
@@ -45,13 +55,36 @@ export default function GraphEditor({ nodes, links, onGraphChange }: GraphEditor
       .data(nodes)
       .enter().append('circle')
       .attr('r', 8)
-      .attr('fill', '#69b3a2')
-      .call(d3.drag() as any)
-        .on('start', dragstarted)
-        .on('drag', dragged)
-        .on('end', dragended);
+      .attr('fill', (d) => {
+        if (d.id === selectedNodeId) return '#facc15'; // yellow highlight for selected node
+        for (const key of Object.keys(highlightMap)) {
+          if (highlightMap[key]?.includes(d.id)) {
+            return colorMap[key] || '#9ca3af';
+          }
+        }
+        return '#d1d5db';
+      })
+      .on('click', (event, targetNode) => {
+        if (selectedNodeId === null) {
+          setSelectedNodeId(targetNode.id);
+        } else if (selectedNodeId === targetNode.id) {
+          setSelectedNodeId(null); // deselect if same node clicked again
+        } else {
+          onGraphChange(nodes, [...links, { source: selectedNodeId, target: targetNode.id }]);
+          setSelectedNodeId(null);
+        }
+        event.stopPropagation();
+      });
 
     node.append('title').text((d) => `Node ${d.id}`);
+
+    svg.on('click', (event: any) => {
+      const coords = d3.pointer(event);
+      const newNode = { id: currentNodeId + 1 };
+      currentNodeId += 1;
+      setSelectedNodeId(null);
+      onGraphChange([...nodes, newNode], links);
+    });
 
     simulation.on('tick', () => {
       link
@@ -64,24 +97,7 @@ export default function GraphEditor({ nodes, links, onGraphChange }: GraphEditor
         .attr('cx', (d: any) => d.x)
         .attr('cy', (d: any) => d.y);
     });
+  }, [nodes, links, highlightMap, selectedNodeId]);
 
-    function dragstarted(event: any, d: any) {
-      if (!event.active) simulation.alphaTarget(0.3).restart();
-      d.fx = d.x;
-      d.fy = d.y;
-    }
-
-    function dragged(event: any, d: any) {
-      d.fx = event.x;
-      d.fy = event.y;
-    }
-
-    function dragended(event: any, d: any) {
-      if (!event.active) simulation.alphaTarget(0);
-      d.fx = null;
-      d.fy = null;
-    }
-  }, [nodes, links]);
-
-  return <svg ref={svgRef} width={600} height={400} className="border rounded" />;
+  return <svg ref={svgRef} width={600} height={400} className="border rounded bg-gray-50 cursor-pointer" />;
 }

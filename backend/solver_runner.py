@@ -1,46 +1,45 @@
 import subprocess
-import tempfile
-import re
+from typing import List
 from backend.models import GraphInput, SolveResult
+import re
+
+def format_graph_input(graph: GraphInput) -> str:
+    vertex_line = f"V {graph.num_vertices}"
+    edge_pairs = [f"<{u},{v}>" for u, v in graph.edges]
+    edge_line = f"E {{{','.join(edge_pairs)}}}"
+    return f"{vertex_line}\n{edge_line}\n"
 
 def run_solver(graph: GraphInput) -> SolveResult:
-    # transform graph input to string format
-    v_line = f"V {graph.num_vertices}"
-    e_line = "E {" + ",".join(f"<{u},{v}>" for u, v in graph.edges) + "}"
-    input_data = f"{v_line}\n{e_line}\n"
-
-    # call vertex_cover_main
-    process = subprocess.run(
-        ["./build/vertex_cover_main"],
-        input=input_data.encode(),
+    input_str = format_graph_input(graph)
+    process = subprocess.Popen(
+        ['./build/vertex_cover_main'],
+        stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
-        timeout=10
+        text=True
     )
 
-    output = process.stdout.decode()
+    stdout, stderr = process.communicate(input=input_str)
+    if stderr:
+        print("Solver stderr:", stderr)
 
-    # extract the results using regex
-    cnf_match = re.search(r"CNF-SAT-VC: ([\d,]*)\nCPU Time: ([\d.]+) ms", output)
-    vc1_match = re.search(r"APPROX-VC-1: ([\d,]*)\nCPU Time: ([\d.]+) ms", output)
-    vc2_match = re.search(r"APPROX-VC-2: ([\d,]*)\nCPU Time: ([\d.]+) ms", output)
+    cnf_match = re.search(r"CNF-SAT-VC:\s*([\d,]*)", stdout)
+    vc1_match = re.search(r"APPROX-VC-1:\s*([\d,]*)", stdout)
+    vc2_match = re.search(r"APPROX-VC-2:\s*([\d,]*)", stdout)
 
-    def parse_solution(m):
-        if m and m.group(1).strip():
-            return list(map(int, m.group(1).split(","))), float(m.group(2))
-        return [], 0.0
+    cnf_vc = [int(x) for x in cnf_match.group(1).split(',')] if cnf_match and cnf_match.group(1) else []
+    approx_vc_1 = [int(x) for x in vc1_match.group(1).split(',')] if vc1_match and vc1_match.group(1) else []
+    approx_vc_2 = [int(x) for x in vc2_match.group(1).split(',')] if vc2_match and vc2_match.group(1) else []
 
-    cnf_vc, cnf_time = parse_solution(cnf_match)
-    vc1, vc1_time = parse_solution(vc1_match)
-    vc2, vc2_time = parse_solution(vc2_match)
+    time_match = lambda label: re.search(rf"{label}:.*?CPU Time: ([\d.]+) ms", stdout)
 
     return SolveResult(
         cnf_vc=cnf_vc,
-        approx_vc_1=vc1,
-        approx_vc_2=vc2,
+        approx_vc_1=approx_vc_1,
+        approx_vc_2=approx_vc_2,
         times={
-            "cnf_sat_vc": cnf_time,
-            "approx_vc_1": vc1_time,
-            "approx_vc_2": vc2_time
+            'cnf_sat_vc': float(time_match("CNF-SAT-VC").group(1)) if time_match("CNF-SAT-VC") else 0.0,
+            'approx_vc_1': float(time_match("APPROX-VC-1").group(1)) if time_match("APPROX-VC-1") else 0.0,
+            'approx_vc_2': float(time_match("APPROX-VC-2").group(1)) if time_match("APPROX-VC-2") else 0.0,
         }
     )
