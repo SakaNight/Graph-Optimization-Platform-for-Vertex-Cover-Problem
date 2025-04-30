@@ -1,0 +1,9 @@
+import axios from 'axios';
+import { GraphInput, SolveResult } from './types';
+
+const API_BASE_URL = 'http://localhost:8000';
+
+export async function solveGraph(graph: GraphInput): Promise<SolveResult> {
+  const response = await axios.post<SolveResult>(`${API_BASE_URL}/solve`, graph);
+  return response.data;
+} 
