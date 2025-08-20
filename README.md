@@ -1,4 +1,4 @@
-# 🧠 Graph Vertex Cover Solver
+# Graph Vertex Cover Solver
 
 A full-stack graph optimization platform for solving the **Minimum Vertex Cover** problem using exact and approximation algorithms. Includes a real-time interactive UI for graph construction, algorithm comparison, and result visualization.
 
@@ -6,7 +6,7 @@ A full-stack graph optimization platform for solving the **Minimum Vertex Cover*
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 
 ```
 .
@@ -31,19 +31,19 @@ A full-stack graph optimization platform for solving the **Minimum Vertex Cover*
 
 ---
 
-## 🚀 Features
+## Features
 
-- ✅ Exact solver using CNF-SAT-VC (SAT-based)
-- ✅ Two approximation algorithms (APPROX-VC-1 and APPROX-VC-2)
-- ✅ Real-time graph drawing and edge editing
-- ✅ WebSocket-based solve interaction with backend
-- ✅ PostgreSQL cache for repeated queries
-- ✅ D3.js visualization + Tailwind styling
-- ✅ Export results as JSON
+- Exact solver using CNF-SAT-VC (SAT-based)
+- Two approximation algorithms (APPROX-VC-1 and APPROX-VC-2)
+- Real-time graph drawing and edge editing
+- WebSocket-based solve interaction with backend
+- PostgreSQL cache for repeated queries
+- D3.js visualization + Tailwind styling
+- Export results as JSON
 
 ---
 
-## ⚙️ Technology Stack
+## Technology Stack
 
 | Layer        | Tech                          |
 | ------------ | ----------------------------- |
@@ -55,7 +55,7 @@ A full-stack graph optimization platform for solving the **Minimum Vertex Cover*
 
 ---
 
-## 🧪 Algorithms Implemented
+## Algorithms Implemented
 
 | Name         | Language | Type         |
 | ------------ | -------- | ------------ |
@@ -67,7 +67,7 @@ Each solver writes its result to `stdout` and is executed from Python using `sub
 
 ---
 
-## 🧰 Setup Instructions
+## Setup Instructions
 
 ### 1. Backend
 
@@ -101,7 +101,7 @@ The compiled `solver` will be used by FastAPI to solve the vertex cover.
 
 ---
 
-## 🐳 Docker (Optional)
+## Docker (Optional)
 
 ```bash
 docker compose up --build
@@ -109,7 +109,7 @@ docker compose up --build
 
 ---
 
-## 📁 Dataset Format
+## Dataset Format
 
 Use `graphs.txt` for bulk testing. JSON upload is also supported:
 
@@ -122,12 +122,12 @@ Use `graphs.txt` for bulk testing. JSON upload is also supported:
 
 ---
 
-## 📄 License
+## License
 
 This project is for educational/research purposes.
 
 ---
 
-## 🧠 Author
+## Author
 
 Developed by Aries Chen as an extension of a University of Waterloo course project.
