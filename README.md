@@ -51,7 +51,7 @@ A full-stack graph optimization platform for solving the **Minimum Vertex Cover*
 | Backend      | FastAPI, WebSockets, SQLAlchemy |
 | Database     | PostgreSQL                    |
 | Solver Core  | C++ multithreaded + SAT       |
-| Build Tools  | CMake, Docker (optional)      |
+| Build Tools  | CMake                         |
 
 ---
 
@@ -98,14 +98,6 @@ make
 ```
 
 The compiled `solver` will be used by FastAPI to solve the vertex cover.
-
----
-
-## Docker (Optional)
-
-```bash
-docker compose up --build
-```
 
 ---
 
